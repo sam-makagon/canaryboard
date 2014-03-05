@@ -21,6 +21,12 @@ module IndicatorsHelper
     link_to "&nbsp;".html_safe, indicator_path(indicator), options
   end
 
+  def format_date(date)
+    if date != nil
+      strftime("%b %-d, %Y %H:%M")
+    end
+  end
+
   def history_row(event)
     color =
       case event.status.name

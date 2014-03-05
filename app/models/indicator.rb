@@ -31,7 +31,7 @@ class Indicator < ActiveRecord::Base
   def set status, message = nil, start_date = nil
     events.create(
       status_id: Status.find_or_create_by_name(status).id,
-      message: message
+      message: message,
       started_at: start_date
       )
   end
