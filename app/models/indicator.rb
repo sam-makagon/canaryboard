@@ -43,7 +43,7 @@ class Indicator < ActiveRecord::Base
       service: self.service.api_return_format,
       current_event: self.current_state.api_return_format,
       custom_url: self.custom_url,
-      started_at: self.current_state.started_at
+      started_at: self.current_state.api_return_format
     }
   end
 
