@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140109134358) do
+ActiveRecord::Schema.define(:version => 20140305170000) do
 
   create_table "events", :force => true do |t|
     t.integer  "indicator_id"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20140109134358) do
     t.text     "message"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.datetime "started_at"
   end
 
   create_table "indicators", :force => true do |t|
