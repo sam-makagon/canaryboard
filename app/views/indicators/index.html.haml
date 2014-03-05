@@ -2,16 +2,26 @@
   %table.table{style:"width: auto;"}
     %thead
       %tr
-        %th
+        %th{style:"vertical-align: middle; text-align: center;"}
+          %span= "Process"
         - @services.sort.each do |service|
           %th{style:"vertical-align: middle; text-align: center;"}
             %span{title: service.description}= service.name
+          %th{style:"vertical-align: middle; text-align: center;"}
+            %span{title: service.description}= "Start Time"
+          %th{style:"vertical-align: middle; text-align: center;"}
+            %span{title: service.description}= "End Time"
+          %th{style:"vertical-align: middle; text-align: center;"}
+            %span{title: service.description}= "Message"
     %tbody
       - @indicator_groups.each do |indicator_group|
         %tr
-          %th{style:"vertical-align: middle; text-align: right;"}
+          %th{style:"vertical-align: middle; text-align: left;"}
             %span{title: indicator_group[0].description}= indicator_group[0].name
           - indicator_group[1].sort_by(&:service_id).each do |indicator|
             %td{style:"text-align: center;"}= status_button indicator
+            %td{style:"text-align: center;"}= indicator.current_state.created_at.strftime("%b %-d, %Y %H:%M")
+            %td{style:"text-align: center;"}= indicator.current_state.updated_at.strftime("%b %-d, %Y %H:%M")
+            %td{style:"text-align: center;"}= indicator.current_state.message
 - else
   %h1 Nothing to show
