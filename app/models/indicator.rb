@@ -28,10 +28,11 @@ class Indicator < ActiveRecord::Base
     events.limit size
   end
 
-  def set status, message = nil
+  def set status, message = nil, start_date = nil
     events.create(
       status_id: Status.find_or_create_by_name(status).id,
       message: message
+      started_at: start_date
       )
   end
 
@@ -41,7 +42,8 @@ class Indicator < ActiveRecord::Base
       project: self.project.api_return_format,
       service: self.service.api_return_format,
       current_event: self.current_state.api_return_format,
-      custom_url: self.custom_url
+      custom_url: self.custom_url,
+      started_at: self.current_state.started_at
     }
   end
 
@@ -50,6 +52,6 @@ private
   # Used in after_create callback.
   # Sets default state of every new indicator.
   def set_on_create
-    set Status::DEFAULT, "Initialization"
+    set Status::DEFAULT, "Initialized"
   end
 end
