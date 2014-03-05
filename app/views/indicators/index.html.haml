@@ -20,8 +20,8 @@
             %span{title: indicator_group[0].description}= indicator_group[0].name
           - indicator_group[1].sort_by(&:service_id).each do |indicator|
             %td{style:"text-align: center;"}= status_button indicator
-            %td{style:"text-align: center;"}= indicator.current_state.created_at.strftime("%b %-d, %Y %H:%M")
-            %td{style:"text-align: center;"}= indicator.current_state.updated_at.strftime("%b %-d, %Y %H:%M")
+            %td{style:"text-align: center;"}= format_date indicator.current_state.started_at
+            %td{style:"text-align: center;"}= format_date indicator.current_state.updated_at
             %td{style:"text-align: center;"}= indicator.current_state.message
 - else
   %h1 Nothing to show
