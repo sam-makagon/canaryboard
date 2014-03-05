@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  attr_accessible :message, :status_id
+  attr_accessible :message, :status_id, :started_at
 
   belongs_to :indicator
   belongs_to :status
@@ -13,7 +13,9 @@ class Event < ActiveRecord::Base
       id: self.id,
       time: self.created_at,
       status: self.status.api_return_format,
-      message: self.message || ""
+      message: self.message || "",
+      started_at: self.started_at || Time.now
     }
   end
 end
+
