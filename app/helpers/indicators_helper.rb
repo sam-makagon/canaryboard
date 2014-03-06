@@ -8,6 +8,8 @@ module IndicatorsHelper
         "btn-warning"
       when "red"
         "btn-danger"
+      when "blue"
+        "btn-info"
       end
 
     options = {

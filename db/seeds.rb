@@ -1,4 +1,4 @@
-["green", "yellow", "red"].each do |color|
+["green", "yellow", "red", "blue"].each do |color|
   Status.create(name: color)
 end
 
