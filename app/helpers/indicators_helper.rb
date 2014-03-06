@@ -43,8 +43,8 @@ module IndicatorsHelper
       end
 
     content_tag :tr,
-      content_tag(:td, content_tag(:i, event.started_at) ) +
-      content_tag(:td, content_tag(:i, event.stopped_at) ) +
+      content_tag(:td, content_tag(:i, format_date(event.started_at)) ) +
+      content_tag(:td, content_tag(:i, format_date(event.stopped_at)) ) +
       content_tag(:td, event.message || "No message"),
       class: color
   end
