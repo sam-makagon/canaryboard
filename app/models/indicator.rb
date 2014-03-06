@@ -28,11 +28,12 @@ class Indicator < ActiveRecord::Base
     events.limit size
   end
 
-  def set status, message = nil, start_date = nil
+  def set status, message = nil, start_date = nil, stop_date = nil
     events.create(
       status_id: Status.find_or_create_by_name(status).id,
       message: message,
-      started_at: start_date
+      started_at: start_date,
+      stopped_at: stop_date
       )
   end
 
@@ -44,6 +45,7 @@ class Indicator < ActiveRecord::Base
       current_event: self.current_state.api_return_format,
       custom_url: self.custom_url,
       started_at: self.current_state.api_return_format
+      stopped_at: self.current_state.api_return_format
     }
   end
 
