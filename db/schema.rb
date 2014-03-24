@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140306110000) do
+ActiveRecord::Schema.define(:version => 20140324150000) do
 
   create_table "events", :force => true do |t|
     t.integer  "indicator_id"
@@ -24,9 +24,11 @@ ActiveRecord::Schema.define(:version => 20140306110000) do
   end
 
   create_table "indicators", :force => true do |t|
-    t.integer "service_id"
-    t.integer "project_id"
-    t.string  "custom_url"
+    t.integer  "service_id"
+    t.integer  "project_id"
+    t.string   "custom_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "indicators", ["project_id", "service_id"], :name => "index_indicators_on_project_id_and_service_id", :unique => true

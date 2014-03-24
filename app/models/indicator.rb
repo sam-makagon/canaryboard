@@ -7,7 +7,8 @@ class Indicator < ActiveRecord::Base
   belongs_to :project
   has_many :events, dependent: :destroy
 
-  default_scope order(:project_id, :service_id)
+  #default_scope order(:project_id, :service_id)
+  default_scope order(:updated_at)
 
   after_create :set_on_create
 
